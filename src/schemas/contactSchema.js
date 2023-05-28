@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const contactFormSchema = yup.object().shape({
+export const contactSchema = yup.object().shape({
   name: yup
     .string()
     .trim()
