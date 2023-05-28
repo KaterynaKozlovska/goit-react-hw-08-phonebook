@@ -82,9 +82,7 @@ export const ContactForm = () => {
   const addNewContact = async data => {
     const normalizedName = data.name.toLowerCase();
 
-    if (
-      contactsItems.find(item => item.name.toLowerCase() === normalizedName)
-    ) {
+    if (contacts.find(item => item.name.toLowerCase() === normalizedName)) {
       return toast.info(`${data.name} is already in contacts!`);
     }
     try {
