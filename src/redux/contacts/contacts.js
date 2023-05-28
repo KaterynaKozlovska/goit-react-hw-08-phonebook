@@ -1,24 +1,46 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, saveContact, deleteContact } from './operations';
-
+import { userSignUp, userSignIn, userSignOut, userRefresh } from './operations';
 const initialState = {
-  items: [],
-  isLoading: false,
+  user: { name: '', email: '' },
+  token: null,
+  isLoggedIn: false,
   error: null,
+  isLoading: false,
+  isFetchingCurrentUser: false,
 };
-const contactsSlice = createSlice({
-  name: 'contacts',
+const authSlice = createSlice({
+  name: 'auth',
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.items = action.payload;
+      .addCase(userSignUp.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
       })
-      .addCase(saveContact.fulfilled, (state, action) => {
-        state.items.push(action.payload);
+      .addCase(userSignIn.fulfilled, (state, action) => {
+        state.user = {
+          name: action.payload.user.name,
+          email: action.payload.user.email,
+        };
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
       })
-      .addCase(deleteContact.fulfilled, (state, action) => {
-        state.items = state.items.filter(item => item.id !== action.payload.id);
+      .addCase(userSignOut.fulfilled, state => {
+        state.user = { name: '', email: '' };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(userRefresh.fulfilled, (state, action) => {
+        state.user = { name: action.payload.name, email: action.payload.email };
+        state.isFetchingCurrentUser = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(userRefresh.pending, state => {
+        state.isFetchingCurrentUser = true;
+      })
+      .addCase(userRefresh.rejected, state => {
+        state.isFetchingCurrentUser = false;
       })
       .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)
@@ -40,8 +62,8 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const extraActions = [fetchContacts, saveContact, deleteContact];
+const extraActions = [userSignUp, userSignIn, userSignOut, userRefresh];
 
 const getActions = type => extraActions.map(action => action[type]);
 
-export const contactsReducer = contactsSlice.reducer;
+export const authReducer = authSlice.reducer;

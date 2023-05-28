@@ -1,38 +1,73 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-import * as api from '../../api';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/getContacts',
+const token = {
+  set(token) {
+    axios.defaults.headers.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.Authorization = '';
+  },
+};
+
+export const userSignUp = createAsyncThunk(
+  'auth/register',
+  async (user, thunkAPI) => {
+    try {
+      const { data } = await axios.post(`/users/signup`, user);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.code);
+    }
+  }
+);
+
+export const userSignIn = createAsyncThunk(
+  'auth/login',
+  async (user, thunkAPI) => {
+    try {
+      const { data } = await axios.post(`/users/login`, user);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.code);
+    }
+  }
+);
+
+export const userSignOut = createAsyncThunk(
+  'auth/logout',
   async (_, thunkAPI) => {
     try {
-      const contactsItems = await api.getContacts();
-      return contactsItems;
+      await axios.post('/users/logout');
+      token.unset();
+      return;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.code);
     }
   }
 );
 
-export const saveContact = createAsyncThunk(
-  'contacts/addContact',
-  async ({ name, number }, thunkAPI) => {
-    try {
-      const contactToAdd = await api.addContact({ name, number });
-      return contactToAdd;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.code);
-    }
-  }
-);
+export const userRefresh = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const currentToken = state.auth.token;
 
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (id, thunkAPI) => {
+    if (currentToken === null) {
+      return thunkAPI.rejectWithValue('');
+    }
+    token.set(currentToken);
+
     try {
-      const contactToDelete = await api.deleteContact(id);
-      return contactToDelete;
+      const { data } = await axios.get('/users/current');
+      return data;
     } catch (error) {
+      toast.error('User is not found');
       return thunkAPI.rejectWithValue(error.code);
     }
   }
