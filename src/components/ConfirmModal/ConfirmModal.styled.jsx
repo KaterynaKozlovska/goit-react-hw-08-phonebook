@@ -28,7 +28,7 @@ export const Container = styled.div`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   background-color: var(bg);
 
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid black;
   border-radius: 16px;
 
   backdrop-filter: blur(5px);
@@ -52,7 +52,7 @@ export const Msg = styled.p`
 export const Name = styled.span`
   font-weight: 700;
   font-size: 18px;
-  color: rgba(255, 255, 255, 1);
+  color: black;
 `;
 
 export const Btn = styled.button`
@@ -60,20 +60,18 @@ export const Btn = styled.button`
 
   font-size: 18px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: black
 
   background-color: transparent;
 
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
   border-radius: 10px;
-
-  transition: all 250ms ease-in-out;
 
   cursor: pointer;
 
   :hover {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
+    color: black;
+    border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.1);
   }
 `;
@@ -83,20 +81,18 @@ export const BtnDelete = styled.button`
 
   font-size: 18px;
   font-weight: 500;
-  color: rgba(227, 67, 67, 0.7);
+  color: black;
 
   background-color: transparent;
 
-  border: 1px solid rgba(227, 67, 67, 0.7);
+  border: 1px solid black;
   border-radius: 10px;
-
-  transition: all 250ms ease-in-out;
 
   cursor: pointer;
 
   :hover {
-    color: rgba(227, 67, 67, 1);
-    border: 1px solid rgba(227, 67, 67, 1);
+    color: black;
+    border: 1px solid black;
     background-color: rgba(227, 67, 67, 0.1);
   }
 `;

@@ -17,7 +17,9 @@ export const ContactItem = ({ id, number, name }) => {
         Delete
       </Btn>
 
-      {shownConfirm && <ConfirmModal name={name} id={id} closeConfirm={toggleConfirm} />}
+      {shownConfirm && (
+        <ConfirmModal name={name} id={id} closeConfirm={toggleConfirm} />
+      )}
     </Item>
   );
 };

@@ -4,7 +4,6 @@ import { Form, Field, ErrorMessage } from 'formik';
 export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const Title = styled.h2`
@@ -12,16 +11,15 @@ export const Title = styled.h2`
 
   font-weight: 500;
   font-size: 24px;
-  color: #fff;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 `;
 
 export const InputWrapper = styled.div`
   position: relative;
 
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   max-width: 100%;
-  width: 450px;
+  width: 300px;
 
   display: flex;
   flex-direction: column;
@@ -31,74 +29,46 @@ export const InputWrapper = styled.div`
 
 export const Label = styled.label`
   font-size: 22px;
-  color: #fff;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 `;
 
 export const Input = styled(Field)`
-  padding: 15px;
+  padding: 5px;
   width: 100%;
 
-  font-size: 24px;
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  color: black;
 
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-
-  transition: all 300ms ease-in-out;
 
   outline: none;
 
-  &:not(:placeholder-shown)[data-error='false'] {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
   &[data-error='true'] {
-    color: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(227, 67, 67, 0.7);
+    color: black;
+    border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.1);
   }
 
   &[type='password'] {
     padding-right: 65px;
   }
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
 `;
 
 export const Btn = styled.button`
-  padding: 16px 32px;
+  padding: 6px 12px;
 
   font-weight: 700;
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 
   background-color: transparent;
 
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-
-  transition: all 250ms ease-in-out;
 
   cursor: pointer;
-
-  :hover {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
-    background-color: rgba(255, 255, 255, 0.2);
-  }
 `;
 
 export const ErrorMsg = styled(ErrorMessage)`
@@ -125,24 +95,21 @@ export const ShowPassBtn = styled.button`
   transform: translateY(-50%);
 
   padding: 5px;
-  width: 33px;
-  height: 33px;
+  width: 23px;
+  height: 23px;
 
   background-color: transparent;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
   border-radius: 7px;
-
-  transition: border 250ms ease-in-out;
 
   cursor: pointer;
 
   &:hover {
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 1px solid black;
   }
 
   &:hover > svg {
-    fill: #fff;
+    fill: black;
   }
 `;

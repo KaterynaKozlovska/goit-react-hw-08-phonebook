@@ -10,37 +10,32 @@ export const Label = styled.label`
   margin-bottom: 5px;
 
   font-size: 22px;
-  color: #fff;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 `;
 
 export const Input = styled.input`
-  padding: 15px;
+  padding: 5px;
   width: 100%;
 
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-
-  transition: all 300ms ease-in-out;
 
   outline: none;
 
   &:not(:placeholder-shown) {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
+    color: black;
+    border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.1);
   }
 
   &:hover,
   &:focus {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
+    color: black;
+    border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.1);
   }
 `;

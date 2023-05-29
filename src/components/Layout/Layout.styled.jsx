@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { device } from 'components/App.styled';
 
 export const Main = styled.main`
   margin: 40px 0;
@@ -16,7 +15,5 @@ export const Wrapper = styled.div`
 
   backdrop-filter: blur(5px);
 
-  @media ${device.tablet} {
-    padding: 20px 40px;
-  }
+ 
 `;

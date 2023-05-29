@@ -5,7 +5,6 @@ import { Header } from './AppBar.styled';
 import { useAuth } from 'hooks/useAuth';
 import { Container } from 'components/App.styled';
 import { useMediaQuery } from 'hooks/useMediaQuery';
-import { MobileMenu } from 'components/MobileMenu/MobileMenu';
 
 export const AppBar = () => {
   const { isLoggedIn } = useAuth();
@@ -14,7 +13,7 @@ export const AppBar = () => {
   return (
     <Container>
       <Header>
-        {!isPageWide && isLoggedIn && <MobileMenu />}
+        {!isPageWide && isLoggedIn}
         {(isPageWide && <Navigation />) || (!isLoggedIn && <Navigation />)}
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Header>

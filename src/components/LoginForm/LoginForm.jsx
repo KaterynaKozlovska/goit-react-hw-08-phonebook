@@ -47,7 +47,7 @@ export const LoginForm = () => {
       {({ errors, touched }) => (
         <FormContainer>
           <Title>Sign in to continue</Title>
-          <Text>*you can also use a test credentials</Text>
+          <Text>*you can also use a test</Text>
           <InputWrapper>
             <Label htmlFor="email">Email:</Label>
             <Input

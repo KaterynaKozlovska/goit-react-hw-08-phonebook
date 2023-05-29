@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { device } from 'components/App.styled';
 
 export const Item = styled.li`
   padding: 10px;
@@ -9,17 +8,8 @@ export const Item = styled.li`
   flex-direction: column;
   gap: 20px;
 
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 1);
+  border: 1px solid black;
   border-radius: 10px;
-
-  @media ${device.tablet} {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
 `;
 
 export const Wrapper = styled.div`
@@ -34,8 +24,7 @@ export const Wrapper = styled.div`
 export const Name = styled.span`
   text-align: left;
   font-size: 18px;
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  color: black;
 `;
 
 export const Number = styled.a`
@@ -44,11 +33,8 @@ export const Number = styled.a`
   font-weight: 500;
   font-size: 18px;
   text-align: right;
-  color: rgba(255, 255, 255, 0.7);
+  color: black;
   text-decoration: none;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-
-  transition: all 250ms ease-in-out;
 
   &::after {
     content: '';
@@ -61,8 +47,6 @@ export const Number = styled.a`
 
     transform: scaleX(0);
     transform-origin: bottom right;
-    transition: transform 300ms ease-in-out;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 
     background-color: #fff;
     border-radius: 5px;
@@ -76,7 +60,7 @@ export const Number = styled.a`
 
   :hover,
   :focus {
-    color: #fff;
+    color: black;
   }
 `;
 
@@ -85,23 +69,18 @@ export const Btn = styled.button`
 
   font-weight: 500;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.7);
-
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 
   background-color: transparent;
 
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-
-  transition: all 250ms ease-in-out;
 
   cursor: pointer;
 
   :hover {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 1);
+    color: black;
+    border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.2);
   }
 `;

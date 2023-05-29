@@ -4,8 +4,7 @@ export const Subtitle = styled.p`
   margin-bottom: 5px;
 
   font-size: 22px;
-  color: #fff;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
 `;
 
 export const Contacts = styled.ul`

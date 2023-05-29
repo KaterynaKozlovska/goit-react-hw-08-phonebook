@@ -1,7 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { createPortal } from 'react-dom';
-import { Overlay, Container, Wrapper, Msg, Name, Btn, BtnDelete } from './ConfirmModal.styled';
+import {
+  Overlay,
+  Container,
+  Wrapper,
+  Msg,
+  Name,
+  Btn,
+  BtnDelete,
+} from './ConfirmModal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
