@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { AppBar } from '../AppBar/AppBar';
 import { Container } from 'components/App.styled';
 import { Main, Wrapper } from './Layout.styled';
-import { BgCircles } from 'components/BgCircles/BgCircles';
 
 export const Layout = () => {
   return (
@@ -18,7 +17,6 @@ export const Layout = () => {
           </Wrapper>
         </Container>
       </Main>
-      <BgCircles />
     </>
   );
 };
