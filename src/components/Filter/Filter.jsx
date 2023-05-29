@@ -1,25 +1,23 @@
-import React from 'react';
-
-import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from '../../redux/contacts/filter';
-import { getFilterValue } from '../../redux/contacts/selectors';
+import { selectContactFilter } from 'redux/filter/selectors';
+import { setContactFilter } from 'redux/filter/slice';
+import { Wrapper, Label, Input } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filterValue = useSelector(getFilterValue);
+  const filter = useSelector(selectContactFilter);
 
   return (
-    <div>
-      <label className={css.filter__label}>Find contacts by name</label>
-      <input
-        className={css.filter__input}
-        type="text"
+    <Wrapper>
+      <Label htmlFor="filter">Find contact by name</Label>
+      <Input
         name="filter"
-        title="Name may contain only letters"
-        value={filterValue}
-        onChange={e => dispatch(setFilter(e.currentTarget.value))}
+        type="text"
+        id="filter"
+        value={filter}
+        placeholder={' '}
+        onChange={e => dispatch(setContactFilter(e.currentTarget.value))}
       />
-    </div>
+    </Wrapper>
   );
 };
