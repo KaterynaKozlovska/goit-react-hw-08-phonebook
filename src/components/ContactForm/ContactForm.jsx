@@ -7,7 +7,14 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { contactSchema } from 'schemas/contactSchema';
 import { Formik } from 'formik';
 import { customAlphabet } from 'nanoid';
-import { FormContainer, Input, Label, InputWrapper, ErrorMsg, Btn } from './ContactForm.styled';
+import {
+  FormContainer,
+  Input,
+  Label,
+  InputWrapper,
+  ErrorMsg,
+  Btn,
+} from './ContactForm.styled';
 
 const nanoid = customAlphabet('1234567890', 3);
 
@@ -28,11 +35,17 @@ export const ContactForm = () => {
       number: values.number,
     };
 
-    if (contacts.find(contact => contact.name === newContact.name)) {
-      return toast.error(`${newContact.name} is already in contacts`);
-    }
+    const normalizedName = newContact.name.toLowerCase();
 
-    dispatch(addContact(newContact));
+    const duplicate = contacts.find(
+      contacts => contacts.name.toLowerCase() === normalizedName
+    );
+
+    if (duplicate) {
+      toast.error(`${newContact.name} is already in contacts.`);
+    } else {
+      dispatch(addContact(newContact));
+    }
     resetForm();
   };
 
