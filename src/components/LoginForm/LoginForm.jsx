@@ -25,15 +25,13 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState(false);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = values => {
     dispatch(
       logIn({
         email: values.email,
         password: values.password,
       })
     );
-
-    resetForm();
   };
 
   const togglePassword = () => setPasswordShown(!passwordShown);
