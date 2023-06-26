@@ -14,7 +14,6 @@ import {
   PassWrapper,
   ShowPassBtn,
 } from './RegisterForm.styled';
-import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   username: '',
@@ -24,36 +23,20 @@ const initialValues = {
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const hadleChange = ({ target: { name, value } }) => {
-    if (name === 'name') {
-      setName(value);
-    }
-    if (name === 'email') {
-      setEmail(value);
-    }
-    if (name === 'password') {
-      setPassword(value);
-    }
-  };
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(
+      register({
+        name: values.username,
+        email: values.email,
+        password: values.password,
+      })
+    );
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if (name && email && password) {
-      dispatch(register({ name, email, password }));
-      setName('');
-      setEmail('');
-      setPassword('');
-      navigate('/');
-    } else {
-      alert('All fields must be filled');
-    }
+    navigate('/');
   };
 
   const togglePassword = () => setPasswordShown(!passwordShown);
@@ -73,11 +56,9 @@ export const RegisterForm = () => {
               type="text"
               name="username"
               id="username"
-              onChange={hadleChange}
-              value={name}
               autoComplete="off"
-              pattern="([A-Za-z]+[\-\s]?){7,25}"
-              title="Enter your first and last name"
+              placeholder={' '}
+              data-error={errors.username && touched.username ? true : false}
             />
             <ErrorMsg name="username" component="span" />
           </InputWrapper>
@@ -88,10 +69,9 @@ export const RegisterForm = () => {
               type="email"
               name="email"
               id="email"
-              onChange={hadleChange}
-              value={email}
               autoComplete="off"
-              title="Example of valid email address: qwerty1@example.com"
+              placeholder={' '}
+              data-error={errors.email && touched.email ? true : false}
             />
             <ErrorMsg name="email" component="span" />
           </InputWrapper>
@@ -103,11 +83,9 @@ export const RegisterForm = () => {
                 type={passwordShown ? 'text' : 'password'}
                 name="password"
                 id="password"
-                onChange={hadleChange}
-                value={password}
                 autoComplete="off"
-                pattern="[0-9a-zA-Z!@#$%^&*]{6,}"
-                title="Password should contains at least 7 symbols"
+                placeholder={' '}
+                data-error={errors.password && touched.password ? true : false}
               />
 
               <ShowPassBtn
