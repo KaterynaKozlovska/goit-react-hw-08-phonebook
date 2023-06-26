@@ -15,6 +15,7 @@ import {
   PassWrapper,
   ShowPassBtn,
 } from './LoginForm.styled';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   email: 'test-user-33@gmail.com',
@@ -23,6 +24,7 @@ const initialValues = {
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
 
   const handleSubmit = values => {
@@ -32,6 +34,7 @@ export const LoginForm = () => {
         password: values.password,
       })
     );
+    navigate('/');
   };
 
   const togglePassword = () => setPasswordShown(!passwordShown);

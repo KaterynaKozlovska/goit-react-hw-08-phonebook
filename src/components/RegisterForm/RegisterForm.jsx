@@ -14,6 +14,7 @@ import {
   PassWrapper,
   ShowPassBtn,
 } from './RegisterForm.styled';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   username: '',
